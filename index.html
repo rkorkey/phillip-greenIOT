@@ -6,233 +6,221 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Phillip Nguyen – Sales Engineer</title>
 
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <!-- Bootstrap CSS & Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
   <style>
+    :root {
+      --primary-color: #4A75B5;
+      --secondary-color: #8DC3A7;
+      --accent-color: #5B7EC0;
+      --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      --card-bg: rgba(255, 255, 255, 0.8);
+      --card-blur: 15px;
+      --text-main: #2d3436;
+      --text-muted: #636e72;
+      --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
     body {
-      background-color: #fff;
+      background: var(--bg-gradient);
+      min-height: 100vh;
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: #333;
-    }
-
-    .header {
-      background: linear-gradient(to bottom, #8DC3A7 0%, #4A75B5 100%);
-      color: #fff;
-      text-align: center;
-      padding: 60px 20px 60px;
-      position: relative;
-    }
-
-    .header .avatar {
-      width: 130px;
-      height: 130px;
-      object-fit: cover;
-      border: 5px solid #fff;
-      border-radius: 50%;
-      margin-bottom: 15px;
-    }
-
-    .header h2 {
-      margin-top: 10px;
-      font-weight: 500;
-      font-size: 22px;
-      margin-bottom: 5px;
-    }
-
-    .header p.lead {
-      margin-bottom: 30px;
-      font-size: 16px;
-      opacity: 0.9;
-      font-weight: normal;
-    }
-
-    .contact-icons {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-
-    .contact-icons .btn {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: #fff;
-      border: none;
-      margin: 0 10px;
+      font-family: 'Outfit', sans-serif;
+      color: var(--text-main);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s ease;
+      padding: 20px;
     }
 
-    .contact-icons .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    .main-container {
+      width: 100%;
+      max-width: 450px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 0.8s forwards ease-out;
     }
 
-    .contact-icons .btn i {
-      font-size: 1.2rem;
-      color: #4A75B5;
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .profile-card {
-      max-width: 600px;
-      margin: 0 auto;
-      background: #fff;
+      background: var(--card-bg);
+      backdrop-filter: blur(var(--card-blur));
+      -webkit-backdrop-filter: blur(var(--card-blur));
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 30px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
       overflow: hidden;
-      padding: 0 15px;
+      padding-bottom: 20px;
     }
 
-    .profile-card .card-body {
-      padding: 1.5rem;
-      /* text-align: justify;
-      text-justify: inter-word; */
-      color: #555;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      max-width: 100%;
-      margin: 0 auto;
+    .header-section {
+      padding: 50px 30px 30px;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(141, 195, 167, 0.1) 0%, rgba(74, 117, 181, 0.1) 100%);
     }
 
-    .profile-card .list-group-item {
-      border: none;
-      padding: 0.75rem 1rem;
-      display: flex;
-      align-items: center;
+    .header-section h2 {
+      font-weight: 700;
+      font-size: 28px;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
     }
 
-    .profile-card .list-group-item .icon-container {
-      min-width: 24px;
-      margin-right: 10px;
+    .header-section p.lead {
+      font-weight: 400;
+      font-size: 16px;
+      color: var(--primary-color);
+      margin-bottom: 25px;
+    }
+
+    .quick-actions {
       display: flex;
       justify-content: center;
+      gap: 15px;
     }
 
-    .profile-card .list-group-item .text-container {
+    .action-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--primary-color);
+      font-size: 1.2rem;
+      transition: var(--transition);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .action-btn:hover {
+      transform: translateY(-5px);
+      background: var(--primary-color);
+      color: #fff;
+      box-shadow: 0 10px 20px rgba(74, 117, 181, 0.2);
+    }
+
+    .contact-list {
+      padding: 20px 25px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      margin-bottom: 12px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+
+    .contact-item:hover {
+      background: #fff;
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+      border-color: rgba(74, 117, 181, 0.1);
+    }
+
+    .icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(74, 117, 181, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      color: var(--primary-color);
+      font-size: 1.1rem;
+    }
+
+    .contact-info {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      width: 100%;
     }
 
-    .profile-card .list-group-item .label {
-      font-size: 12px;
-      color: #888;
+    .contact-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      font-weight: 600;
       margin-bottom: 2px;
     }
 
-    .profile-card .list-group-item .value {
-      font-size: 14px;
-      color: #333;
-      word-break: break-word;
+    .contact-value {
+      font-size: 15px;
+      font-weight: 500;
     }
 
-    .profile-card .list-group-item a {
-      color: #333;
-      text-decoration: none;
+    .add-contact-section {
+      padding: 10px 25px 25px;
     }
 
-    .add-contact-btn {
-      display: flex;
+    .btn-save {
       width: 100%;
-      border: none;
-      background: #5B7EC0;
+      background: var(--primary-color);
       color: #fff;
-      font-size: 1rem;
-      padding: 0.8rem;
-      margin-top: 10px;
+      border: none;
+      padding: 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 16px;
+      display: flex;
       align-items: center;
       justify-content: center;
-      transition: background-color 0.3s ease;
-      border-radius: 10px;
+      gap: 10px;
+      transition: var(--transition);
+      box-shadow: 0 10px 25px rgba(74, 117, 181, 0.25);
     }
 
-    .add-contact-btn:hover {
-      background-color: #4A6DB0;
+    .btn-save:hover {
+      background: #3d629a;
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(74, 117, 181, 0.35);
     }
 
-    .add-contact-btn i {
-      margin-right: 10px;
+    .footer-text {
+      text-align: center;
+      margin-top: 25px;
+      font-size: 13px;
+      color: var(--text-muted);
+      opacity: 0.7;
     }
 
-    /* Responsive styles */
-    @media (max-width: 576px) {
-      .header {
-        padding: 40px 15px 60px;
+    /* Mobile adjustments */
+    @media (max-width: 480px) {
+      .main-container {
+        padding: 10px;
       }
 
-      .header .avatar {
-        width: 120px;
-        height: 120px;
+      .profile-card {
+        border-radius: 25px;
       }
 
-      .header h2 {
-        font-size: 20px;
+      .header-section {
+        padding: 40px 20px 25px;
       }
 
-      .header p.lead {
-        font-size: 14px;
-        margin-bottom: 20px;
-      }
-
-      .contact-icons .btn {
-        width: 45px;
-        height: 45px;
-      }
-
-      .profile-card .card-body {
-        padding: 1.2rem 0.8rem;
-        font-size: 0.9rem;
-      }
-
-      .profile-card .list-group-item {
-        padding: 0.6rem 0.8rem;
-      }
-
-      .add-contact-btn {
-        font-size: 0.9rem;
-        padding: 0.7rem;
-      }
-    }
-
-    @media (max-width: 360px) {
-      .header {
-        padding: 30px 10px 50px;
-      }
-
-      .header .avatar {
-        width: 60px;
-        height: 60px;
-      }
-
-      .header h2 {
-        font-size: 18px;
-      }
-
-      .header p.lead {
-        font-size: 13px;
-      }
-
-      .contact-icons .btn {
-        width: 40px;
-        height: 40px;
-        margin: 0 8px;
-      }
-
-      .profile-card .card-body {
-        padding: 1rem 0.5rem;
-        font-size: 0.85rem;
-      }
-
-      .profile-card .list-group-item .label {
-        font-size: 11px;
-      }
-
-      .profile-card .list-group-item .value {
-        font-size: 13px;
+      .header-section h2 {
+        font-size: 24px;
       }
     }
   </style>
@@ -240,88 +228,80 @@
 
 <body>
 
-  <section class="header">
-    <img src="phillip.jpg" alt="Avatar" class="avatar">
-    <h2>Phillip Nguyen</h2>
-    <p class="lead">Sales Engineer - Solar & Battery</p>
-    <div class="contact-icons">
-      <button class="btn" onclick="location.href='tel:+61468569937'">
-        <i class="bi bi-telephone-fill"></i>
-      </button>
-      <button class="btn" onclick="location.href='mailto:phillip.nguyen@greeniot.com.au'">
-        <i class="bi bi-envelope-fill"></i>
-      </button>
-    </div>
-  </section>
+  <div class="main-container">
+    <div class="profile-card">
+      <section class="header-section">
+        <h2>Phillip Nguyen</h2>
+        <p class="lead">Sales Engineer - Solar & Battery</p>
 
-  <br>
-  <div class="profile-card">
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item p-0">
-        <a href="tel:+61468569937" class="d-flex align-items-center text-reset text-decoration-none py-2 px-3 w-100">
-          <div class="icon-container me-3">
-            <i class="bi bi-telephone-fill text-secondary" style="font-size: 1.2rem;"></i>
-          </div>
-          <div class="text-container">
-            <span class="label">Phone</span>
-            <span class="value">+61 468 569 937</span>
-          </div>
-        </a>
-      </li>
-      <li class="list-group-item p-0">
-        <a href="mailto:phillip.nguyen@greeniot.com.au"
-          class="d-flex align-items-center text-reset text-decoration-none py-2 px-3 w-100">
-          <div class="icon-container me-3">
-            <i class="bi bi-envelope-fill text-secondary" style="font-size: 1.2rem;"></i>
-          </div>
-          <div class="text-container">
-            <span class="label">E-mail</span>
-            <span class="value">phillip.nguyen@greeniot.com.au</span>
-          </div>
-        </a>
-      </li>
-      <li class="list-group-item p-0">
-        <a href="#" class="d-flex align-items-center text-reset text-decoration-none py-2 px-3 w-100">
-          <div class="icon-container me-3">
-            <i class="bi bi-globe2 text-secondary" style="font-size: 1.2rem;"></i>
-          </div>
-          <div class="text-container">
-            <span class="label">Website</span>
-            <span class="value">www.greeniot.com.au</span>
-          </div>
-        </a>
-      </li>
-      <li class="list-group-item p-0">
-        <a href="#" class="d-flex align-items-center text-reset text-decoration-none py-2 px-3 w-100">
-          <div class="icon-container me-3">
-            <i class="bi bi-building text-secondary" style="font-size: 1.2rem;"></i>
-          </div>
-          <div class="text-container">
-            <span class="label">GreenIOT</span>
-            <span class="value">Sales Engineer</span>
-          </div>
-        </a>
-      </li>
-    </ul>
+        <div class="quick-actions">
+          <a href="tel:+61468569937" class="action-btn">
+            <i class="bi bi-telephone-fill"></i>
+          </a>
+          <a href="mailto:phillip.nguyen@greeniot.com.au" class="action-btn">
+            <i class="bi bi-envelope-fill"></i>
+          </a>
+        </div>
+      </section>
 
-    <button id="addContact" class="add-contact-btn">
-      <i class="bi bi-person-plus"></i>
-      Add Contact
-    </button>
+      <div class="contact-list">
+        <!-- Phone -->
+        <a href="tel:+61468569937" class="contact-item">
+          <div class="icon-box">
+            <i class="bi bi-phone"></i>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">Phone</span>
+            <span class="contact-value">0 468 569 937</span>
+          </div>
+        </a>
 
-    <div class="card-body">
-      <p>⚡ Smarter Solar & Battery Solutions
-        Your Trusted Consultant at GreenIoT</p>
-      <p>✅ CEC Approved Solar Retailer</p>
-      <p>✅ Premium Tier-1 products only</p>
-      <p>✅ Certified in-house installers (CEC Accredited)</p>
-      <p>✅ Pressure-free advice tailored to you</p>
-      <p>✅ Complete end-to-end support for a hassle-free experience</p>
-      <p>📞 Tap above to save my contact — let’s lower your energy bills the smart way!</p>
+        <!-- Email -->
+        <a href="mailto:phillip.nguyen@greeniot.com.au" class="contact-item">
+          <div class="icon-box">
+            <i class="bi bi-envelope-at"></i>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">Email</span>
+            <span class="contact-value">phillip.nguyen@greeniot.com.au</span>
+          </div>
+        </a>
+
+        <!-- Website -->
+        <a href="https://www.greeniot.com.au" target="_blank" class="contact-item">
+          <div class="icon-box">
+            <i class="bi bi-globe"></i>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">Website</span>
+            <span class="contact-value">www.greeniot.com.au</span>
+          </div>
+        </a>
+
+        <!-- Company -->
+        <div class="contact-item">
+          <div class="icon-box">
+            <i class="bi bi-building"></i>
+          </div>
+          <div class="contact-info">
+            <span class="contact-label">Company</span>
+            <span class="contact-value">GreenIOT</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="add-contact-section">
+        <button id="addContact" class="btn-save">
+          <i class="bi bi-person-plus-fill"></i>
+          Add to Contacts
+        </button>
+      </div>
     </div>
 
+    <div class="footer-text">
+      Digital Business Card &copy; 2024
+    </div>
   </div>
-  <br>
 
   <script>
     document.getElementById('addContact').addEventListener('click', () => {
